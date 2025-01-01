@@ -23,11 +23,10 @@ function renameFiles(names) {
   
   names.forEach((name) => {
     if (namesRegister.has(name)) {
-      suffix = namesRegister.get(name) + 1;
+      suffix = namesRegister.get(name);
       nameChanged = `${name}(${suffix})`;
       while (namesRegister.has(nameChanged)) {
-        suffix + 1;
-        nameChanged = `${name}(${suffix})`;
+        nameChanged = `${name}(${suffix++})`;
         }
       namesRegister.set(nameChanged, suffix);
       } else {
