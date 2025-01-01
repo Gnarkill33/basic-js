@@ -16,25 +16,26 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function renameFiles(names) {
-  // if (names.length === 0) return names;
-  // let namesRegister = new Map();
-  // let suffix;
-  // let nameChanged;
+  if (names.length === 0) return names;
+  let namesRegister = new Map();
+  let suffix;
+  let nameChanged;
   
-  // names.forEach((name) => {
-  //   if (namesRegister.has(name)) {
-  //     suffix = namesRegister.get(name) + 1;
-  //     nameChanged = `${name}(${suffix})`;
-  //     while (namesRegister.has(nameChanged)) {
-  //            suffix + 1;
-  //            nameChanged = `${name}(${suffix})`;
-  //       }
-  //     namesRegister.set(nameChanged, suffix);
-  //     } else {
-  //       namesRegister.set(name, 0);
-  //       }
-  // })
-  // console.log(namesRegister);
+  names.forEach((name) => {
+    if (namesRegister.has(name)) {
+      suffix = namesRegister.get(name) + 1;
+      nameChanged = `${name}(${suffix})`;
+      while (namesRegister.has(nameChanged)) {
+        suffix + 1;
+        nameChanged = `${name}(${suffix})`;
+        }
+      namesRegister.set(nameChanged, suffix);
+      } else {
+        namesRegister.set(name, 1);
+        }
+  })
+  const newNames = [...namesRegister.keys()];
+  return newNames;
 }
 
 module.exports = {
